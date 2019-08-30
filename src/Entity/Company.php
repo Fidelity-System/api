@@ -18,8 +18,26 @@ class Company
      */
     private $id;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $iduser;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getIduser(): ?User
+    {
+        return $this->iduser;
+    }
+
+    public function setIduser(User $iduser): self
+    {
+        $this->iduser = $iduser;
+
+        return $this;
     }
 }
